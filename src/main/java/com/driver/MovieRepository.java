@@ -13,7 +13,6 @@ import java.util.Objects;
 @Repository
 @Component
 public class MovieRepository {
-   // HashMap<Movie,Director> ListOfPair=new HashMap<>();
     HashMap<String,Movie> ListOfMoviesInDB=new HashMap<>();
     HashMap<Director,List<String>> ListOfDirectorsInDB=new HashMap<>();
     //Adding movie to DB
@@ -38,10 +37,9 @@ public class MovieRepository {
         }
 
     }
-
-    public Movie getMovieByNameFromDB(String name) {
-        return ListOfMoviesInDB.get(name);
-    }
+    //Get movie by name from DB
+    public Movie getMovieByNameFromDB(String name) { return ListOfMoviesInDB.get(name);}
+    //Get director by name from DB
     public Director getDirectorByNameFromDB(String name) {
         for(Director director:ListOfDirectorsInDB.keySet()){
             if(Objects.equals(director.getName(), name)){
@@ -50,7 +48,7 @@ public class MovieRepository {
         }
         return null;
     }
-
+    //Print all movies from DB
     public List<String> findAllMoviesFromDB() {
         LinkedList<String> listOfMovies=new LinkedList<>();
         for(Movie movie:ListOfMoviesInDB.values()){
@@ -58,7 +56,7 @@ public class MovieRepository {
         }
         return listOfMovies;
     }
-
+    //Get all movies of director from DB
     public List<String> getMoviesByDirectorNameFromDB(String dName) {
     for(Director director:ListOfDirectorsInDB.keySet()){
         if(Objects.equals(director.getName(),dName)){
@@ -67,7 +65,7 @@ public class MovieRepository {
     }
     return null;
     }
-
+    //Delete director and his movies from DB
     public void deleteDirectorByNameFromDB(String dName) {
         for(Director director:ListOfDirectorsInDB.keySet()){
             if(Objects.equals(director.getName(),dName)){
@@ -81,16 +79,14 @@ public class MovieRepository {
             }
         }
     }
-
+    //Delete all directors and their movies from DB
     public void deleteAllDirectorsFromDB() {
-        for(Director director:ListOfDirectorsInDB.keySet()){
-            List<String> temp;
-            temp=ListOfDirectorsInDB.get(director);
+        for(List<String> temp:ListOfDirectorsInDB.values()){
             for(String movie:temp){
                 ListOfMoviesInDB.remove(movie);
             }
         }
         ListOfDirectorsInDB.clear();
     }
-    //
+
 }

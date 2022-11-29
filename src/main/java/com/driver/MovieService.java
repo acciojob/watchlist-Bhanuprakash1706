@@ -23,31 +23,17 @@ public class MovieService {
         movieRepository.addDirectorToDB(director);
     }
 
-    public void addAllMovieDirectorPair(String mName, String dName) {
-        movieRepository.addMovieDirectorPairToDB(mName,dName);
-    }
+    public void addAllMovieDirectorPair(String mName, String dName) { movieRepository.addMovieDirectorPairToDB(mName,dName);}
 
-    public Movie getAllMoviesByName(String name) {
-        return movieRepository.getMovieByNameFromDB(name);
-    }
+    public Movie getAllMoviesByName(String name) { return movieRepository.getMovieByNameFromDB(name);}
 
-    public Director getAllDirectorsByName(String name) {
-        return movieRepository.getDirectorByNameFromDB(name);
-    }
+    public Director getAllDirectorsByName(String name) { return movieRepository.getDirectorByNameFromDB(name);}
 
-    public List<String> findAllMovies() {
-        return movieRepository.findAllMoviesFromDB();
-    }
+    public List<String> findAllMovies() { return movieRepository.findAllMoviesFromDB();}
 
-    public List<String> getAllMoviesByDirectorName(String dName) {
-    return movieRepository.getMoviesByDirectorNameFromDB(dName);
-    }
+    public List<String> getAllMoviesByDirectorName(String dName) { return movieRepository.getMoviesByDirectorNameFromDB(dName);}
 
-    public void deleteAllDirectorsByName(String dName) {
-        movieRepository.deleteDirectorByNameFromDB(dName);
-    }
+    public void deleteAllDirectorsByName(String dName) { movieRepository.deleteDirectorByNameFromDB(dName);}
 
-    public void deleteAllDirectors() {
-        movieRepository.deleteAllDirectorsFromDB();
-    }
+    public void deleteAllDirectors() { movieRepository.deleteAllDirectorsFromDB();}
 }

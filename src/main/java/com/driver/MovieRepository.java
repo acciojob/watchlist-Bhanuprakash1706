@@ -41,7 +41,6 @@ public class MovieRepository {
     public Movie getMovieByNameFromDB(String name) {
         return ListOfMoviesInDB.get(name);
     }
-    //not working
     public Director getDirectorByNameFromDB(String name) {
         for(Director director:ListOfDirectorsInDB.keySet()){
             if(Objects.equals(director.getName(), name)){

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.LinkedList;
+import java.util.List;
 
 @Service
 @Component
@@ -34,11 +35,11 @@ public class MovieService {
         return movieRepository.getDirectorByNameFromDB(name);
     }
 
-    public LinkedList<Movie> findAllMovies() {
+    public List<String> findAllMovies() {
         return movieRepository.findAllMoviesFromDB();
     }
 
-    public LinkedList<Movie> getAllMoviesByDirectorName(String dName) {
+    public List<String> getAllMoviesByDirectorName(String dName) {
     return movieRepository.getMoviesByDirectorNameFromDB(dName);
     }
 

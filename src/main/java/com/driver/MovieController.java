@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedList;
+import java.util.List;
 
 @RestController
 public class MovieController {
@@ -14,9 +15,9 @@ public class MovieController {
 
     //Add a movie
     @PostMapping("/movies/add-movie")
-    public ResponseEntity<String> addMovie(@RequestBody() Movie movie){
+    public ResponseEntity addMovie(@RequestBody() Movie movie){
         movieService.addAllMovies(movie);
-        return new ResponseEntity("success",HttpStatus.CREATED);
+        return new ResponseEntity(HttpStatus.CREATED);
     }
     //Add a director
     @PostMapping("/movies/add-director")
@@ -39,11 +40,11 @@ public class MovieController {
         return new ResponseEntity(movieService.getAllDirectorsByName(name), HttpStatus.ACCEPTED);
     }
     @GetMapping("/movies/get-movies-by-director-name/{director}")
-    public ResponseEntity<LinkedList<Movie>> getMoviesByDirectorName(@PathVariable("director") String dName){
+    public ResponseEntity<List<String>> getMoviesByDirectorName(@PathVariable("director") String dName){
         return new ResponseEntity(movieService.getAllMoviesByDirectorName(dName),HttpStatus.ACCEPTED);
     }
     @GetMapping("/movies/get-all-movies")
-    public ResponseEntity<LinkedList<Movie>> findAllMovies(){
+    public ResponseEntity<List<String>> findAllMovies(){
         return new ResponseEntity(movieService.findAllMovies(),HttpStatus.ACCEPTED);
     }
     @DeleteMapping("/movies/delete-director-by-name")

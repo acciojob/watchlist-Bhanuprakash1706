@@ -16,19 +16,19 @@ public class MovieController {
     @PostMapping("/movies/add-movie")
     public ResponseEntity<String> addMovie(@RequestBody() Movie movie){
         movieService.addAllMovies(movie);
-        return new ResponseEntity("Added successfully",HttpStatus.CREATED);
+        return new ResponseEntity("success",HttpStatus.CREATED);
     }
     //Add a director
     @PostMapping("/movies/add-director")
     public ResponseEntity<String> addDirector(@RequestBody() Director director){
         movieService.addAllDirectors(director);
-        return new ResponseEntity("Added successfully",HttpStatus.CREATED);
+        return new ResponseEntity("success",HttpStatus.CREATED);
     }
     //Add pair of movie and director
     @PutMapping("/movies/add-movie-director-pair")
-    public ResponseEntity addMovieDirectorPair(@RequestParam("mn") String mName,@RequestParam("dn") String dName){
+    public ResponseEntity<String> addMovieDirectorPair(@RequestParam("mn") String mName,@RequestParam("dn") String dName){
         movieService.addAllMovieDirectorPair(mName,dName);
-        return new ResponseEntity(HttpStatus.CREATED);
+        return new ResponseEntity("success",HttpStatus.CREATED);
     }
     @GetMapping("/movies/get-movie-by-name/{name}")
     public ResponseEntity<Movie>  getMovieByName(@PathVariable("name") String name){
@@ -47,13 +47,13 @@ public class MovieController {
         return new ResponseEntity(movieService.findAllMovies(),HttpStatus.ACCEPTED);
     }
     @DeleteMapping("/movies/delete-director-by-name")
-    public ResponseEntity deleteDirectorByName(@RequestParam("dName") String dName){
+    public ResponseEntity<String> deleteDirectorByName(@RequestParam("dName") String dName){
         movieService.deleteAllDirectorsByName(dName);
-        return new ResponseEntity(HttpStatus.ACCEPTED);
+        return new ResponseEntity("success",HttpStatus.ACCEPTED);
     }
     @DeleteMapping("/movies/delete-all-directors")
     public ResponseEntity<String> deleteAllDirectors(){
         movieService.deleteAllDirectors();
-        return new ResponseEntity("Deleted",HttpStatus.ACCEPTED);
+        return new ResponseEntity("success",HttpStatus.ACCEPTED);
     }
 }
